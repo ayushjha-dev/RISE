@@ -44,6 +44,8 @@ type State = {
     skills: string[];
     resumeUrl: string;
     availableForInternships: boolean;
+    linkedinUrl?: string;
+    githubUrl?: string;
   }[];
   seenMilestones: string[];
 };
@@ -167,6 +169,11 @@ export const actions = {
   },
   addInternship(internship: Internship) {
     set({ extraInternships: [internship, ...state.extraInternships] });
+  },
+  updateInternship(id: string, patch: Partial<Omit<Internship, "id" | "orgId" | "assessmentId" | "postedOn">>) {
+    set({
+      extraInternships: state.extraInternships.map((i) => (i.id === id ? { ...i, ...patch } : i)),
+    });
   },
   markMilestone(key: string) {
     if (state.seenMilestones.includes(key)) return false;

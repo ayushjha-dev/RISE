@@ -214,6 +214,76 @@ function OrgDashboard() {
           </div>
         </Card>
       </div>
+
+      <Card className="mt-6 p-5">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="display-md text-[21px]">Your posted internships</h2>
+          <Link to="/organization/post">
+            <Button size="sm">
+              <Icon name="plus" size={16} />
+              Post new
+            </Button>
+          </Link>
+        </div>
+        <div className="mt-5">
+          {internships.isLoading ? (
+            <ListSkeleton rows={3} />
+          ) : mine.length === 0 ? (
+            <EmptyState
+              variant="list"
+              title="No internships posted yet"
+              note="Post your first internship to start receiving applications from matched students."
+              action={
+                <Link to="/organization/post">
+                  <Button size="sm">Post internship</Button>
+                </Link>
+              }
+            />
+          ) : (
+            <ul className="flex flex-col divide-y divide-hairline">
+              {mine.map((internship) => {
+                const applicantCount = forMine.filter((a) => a.internshipId === internship.id).length;
+                return (
+                  <li key={internship.id} className="py-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-semibold text-ink">{internship.title}</p>
+                        <p className="mt-1 text-sm text-body">
+                          {internship.location} • {internship.duration} • {internship.stipend}
+                        </p>
+                        <div className="mt-2 flex flex-wrap items-center gap-3">
+                          <span className="text-[13px] text-muted">
+                            Posted {daysAgo(internship.postedOn)}
+                          </span>
+                          <span className="text-[13px] font-semibold text-accent">
+                            {applicantCount} {applicantCount === 1 ? "applicant" : "applicants"}
+                          </span>
+                        </div>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {internship.skillsRequired.slice(0, 4).map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-pill border border-hairline bg-surface px-2 py-0.5 text-[12px] text-muted"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <Link to="/organization/post" search={{ edit: internship.id }}>
+                        <Button size="sm" variant="secondary">
+                          <Icon name="clipboard" size={14} />
+                          Edit
+                        </Button>
+                      </Link>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </Card>
     </div>
   );
 }

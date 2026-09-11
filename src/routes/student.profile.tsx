@@ -35,6 +35,8 @@ function ProfilePage() {
   const [skills, setSkills] = useState<string[]>([]);
   const [available, setAvailable] = useState(true);
   const [resume, setResume] = useState("");
+  const [linkedinUrl, setLinkedinUrl] = useState("");
+  const [githubUrl, setGithubUrl] = useState("");
   const [abcId, setAbcId] = useState("");
   const [abcState, setAbcState] = useState<"idle" | "checking" | "verified" | "failed">("idle");
   const [abcError, setAbcError] = useState("");
@@ -45,6 +47,8 @@ function ProfilePage() {
     setSkills(student.skills);
     setAvailable(student.availableForInternships);
     setResume(student.resumeUrl);
+    setLinkedinUrl(student.linkedinUrl || "");
+    setGithubUrl(student.githubUrl || "");
     setAbcId(student.abcId);
     setAbcState(student.abcVerified ? "verified" : "idle");
   }, [student?.id]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -69,6 +73,8 @@ function ProfilePage() {
         skills,
         availableForInternships: available,
         resumeUrl: resume,
+        linkedinUrl,
+        githubUrl,
         abcVerified: abcState === "verified",
         abcId,
       });
@@ -178,6 +184,31 @@ function ProfilePage() {
         <h2 className="text-[20px] font-semibold text-ink">Resume</h2>
         <div className="mt-4">
           <Dropzone fileName={resume || undefined} onFile={setResume} />
+        </div>
+      </Card>
+
+      <Card className="mt-6 p-5">
+        <h2 className="text-[20px] font-semibold text-ink">Professional profiles</h2>
+        <p className="mt-1.5 text-sm text-muted">
+          Organizations can view your LinkedIn and GitHub profiles to better assess your work.
+        </p>
+        <div className="mt-5 space-y-4">
+          <Field label="LinkedIn profile URL" htmlFor="linkedin">
+            <TextInput
+              id="linkedin"
+              placeholder="https://linkedin.com/in/your-profile"
+              value={linkedinUrl}
+              onChange={(e) => setLinkedinUrl(e.target.value)}
+            />
+          </Field>
+          <Field label="GitHub profile URL" htmlFor="github">
+            <TextInput
+              id="github"
+              placeholder="https://github.com/your-username"
+              value={githubUrl}
+              onChange={(e) => setGithubUrl(e.target.value)}
+            />
+          </Field>
         </div>
       </Card>
 

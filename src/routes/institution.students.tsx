@@ -150,6 +150,50 @@ function InstitutionStudents() {
               )}
             </div>
 
+            {(open.resumeUrl || open.linkedinUrl || open.githubUrl) && (
+              <div className="mt-6">
+                <h3 className="text-[16px] font-semibold text-ink">Profile links</h3>
+                <div className="mt-3 flex flex-col gap-2">
+                  {open.resumeUrl && (
+                    <a
+                      href={`/resumes/${open.resumeUrl}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="clipboard" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">{open.resumeUrl}</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                  {open.linkedinUrl && (
+                    <a
+                      href={open.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="external" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">LinkedIn Profile</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                  {open.githubUrl && (
+                    <a
+                      href={open.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="external" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">GitHub Profile</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
+
             <h3 className="mt-6 text-[16px] font-semibold text-ink">Applications</h3>
             {appsOf(open.id).length === 0 ? (
               <p className="mt-2 text-sm text-muted">

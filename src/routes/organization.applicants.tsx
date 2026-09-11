@@ -341,11 +341,48 @@ function Applicants() {
               </>
             )}
 
-            {studentOf(open)?.resumeUrl && (
-              <p className="mt-6 flex items-center gap-2 text-[13px] text-muted">
-                <Icon name="clipboard" size={15} />
-                <span className="truncate">{studentOf(open)?.resumeUrl}</span>
-              </p>
+            {(studentOf(open)?.resumeUrl || studentOf(open)?.linkedinUrl || studentOf(open)?.githubUrl) && (
+              <div className="mt-6">
+                <h3 className="text-[16px] font-semibold text-ink">Profile & Resume</h3>
+                <div className="mt-3 flex flex-col gap-2">
+                  {studentOf(open)?.resumeUrl && (
+                    <a
+                      href={`/resumes/${studentOf(open)?.resumeUrl}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="clipboard" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">{studentOf(open)?.resumeUrl}</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                  {studentOf(open)?.linkedinUrl && (
+                    <a
+                      href={studentOf(open)?.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="external" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">LinkedIn Profile</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                  {studentOf(open)?.githubUrl && (
+                    <a
+                      href={studentOf(open)?.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 rounded-[10px] border border-hairline bg-surface px-3 py-2.5 text-sm text-body transition-colors hover:bg-surface-soft"
+                    >
+                      <Icon name="external" size={16} className="text-accent" />
+                      <span className="flex-1 truncate">GitHub Profile</span>
+                      <Icon name="external" size={14} className="shrink-0 text-muted" />
+                    </a>
+                  )}
+                </div>
+              </div>
             )}
           </div>
         )}

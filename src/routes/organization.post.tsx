@@ -1,16 +1,22 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card, Chip, Field, Select, TextArea, TextInput } from "@/components/rise/primitives";
 import { Icon } from "@/components/rise/icons";
 import { generateJd } from "@/lib/jd.functions";
 import { actions, useStore } from "@/lib/store";
 import { useToast } from "@/components/rise/toast";
 import { PageTitle } from "@/components/rise/shell";
+import { useInternships } from "@/lib/portal";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/organization/post")({
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      edit: typeof search.edit === "string" ? search.edit : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title: "Post an internship — RISE" },
@@ -32,6 +38,8 @@ function PostInternship() {
   const session = useStore((s) => s.session);
   const navigate = useNavigate();
   const toast = useToast();
+  const { edit } = Route.useSearch();
+  const internships = useInternships();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -41,6 +49,22 @@ function PostInternship() {
   const [stipend, setStipend] = useState("");
   const [aiDrafted, setAiDrafted] = useState(false);
   const [posting, setPosting] = useState(false);
+
+  const editingInternship = edit
+    ? (internships.data ?? []).find((i) => i.id === edit && i.orgId === session?.id)
+    : null;
+
+  useEffect(() => {
+    if (editingInternship) {
+      setTitle(editingInternship.title);
+      setDescription(editingInternship.description);
+      setSkills(editingInternship.skillsRequired);
+      setLocation(editingInternship.location);
+      setDuration(editingInternship.duration);
+      setStipend(editingInternship.stipend);
+      setAiDrafted(editingInternship.aiGenerated);
+    }
+  }, [editingInternship?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const generate = useServerFn(generateJd);
   const draft = useMutation({
@@ -58,28 +82,47 @@ function PostInternship() {
   const post = () => {
     if (posting || !ready || !session) return;
     setPosting(true);
-    actions.addInternship({
-      id: `int-new-${Date.now()}`,
-      orgId: session.id,
-      title: title.trim(),
-      location: location || "Remote",
-      duration: duration || "6 months",
-      stipend: stipend || "Stipend on discussion",
-      skillsRequired: skills,
-      description: description.trim(),
-      aiGenerated: aiDrafted,
-      assessmentId: "asmt-web",
-      postedOn: new Date().toISOString().slice(0, 10),
-    });
-    toast.push("success", "Internship posted");
-    setTimeout(() => navigate({ to: "/organization/applicants" }), 400);
+    
+    if (editingInternship) {
+      actions.updateInternship(editingInternship.id, {
+        title: title.trim(),
+        location: location || "Remote",
+        duration: duration || "6 months",
+        stipend: stipend || "Stipend on discussion",
+        skillsRequired: skills,
+        description: description.trim(),
+        aiGenerated: aiDrafted,
+      });
+      toast.push("success", "Internship updated");
+    } else {
+      actions.addInternship({
+        id: `int-new-${Date.now()}`,
+        orgId: session.id,
+        title: title.trim(),
+        location: location || "Remote",
+        duration: duration || "6 months",
+        stipend: stipend || "Stipend on discussion",
+        skillsRequired: skills,
+        description: description.trim(),
+        aiGenerated: aiDrafted,
+        assessmentId: "asmt-web",
+        postedOn: new Date().toISOString().slice(0, 10),
+      });
+      toast.push("success", "Internship posted");
+    }
+    
+    setTimeout(() => navigate({ to: "/organization" }), 400);
   };
 
   return (
     <div className="max-w-3xl pb-24 sm:pb-0">
       <PageTitle
-        title="Post an internship"
-        note="Draft it with AI or write it yourself. Either way you review and edit every field before it goes live."
+        title={editingInternship ? "Edit internship" : "Post an internship"}
+        note={
+          editingInternship
+            ? "Update any field and save changes. The posting remains live while you edit."
+            : "Draft it with AI or write it yourself. Either way you review and edit every field before it goes live."
+        }
       />
 
       <Card className="p-5 sm:p-6" active>
@@ -259,9 +302,26 @@ function PostInternship() {
       </div>
 
       <div className="fixed inset-x-0 bottom-[72px] z-40 border-t border-hairline bg-surface px-5 py-3 sm:static sm:mt-6 sm:border-0 sm:bg-transparent sm:px-0">
-        <Button full className="sm:w-auto" disabled={!ready || posting} onClick={post}>
-          {posting ? "Posting internship" : "Post internship"}
-        </Button>
+        <div className="flex gap-3">
+          <Button full className="sm:w-auto" disabled={!ready || posting} onClick={post}>
+            {posting
+              ? editingInternship
+                ? "Saving changes"
+                : "Posting internship"
+              : editingInternship
+                ? "Save changes"
+                : "Post internship"}
+          </Button>
+          {editingInternship && (
+            <Button
+              variant="secondary"
+              onClick={() => navigate({ to: "/organization" })}
+              disabled={posting}
+            >
+              Cancel
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

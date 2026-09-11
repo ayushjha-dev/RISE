@@ -9,7 +9,9 @@
     "year": "Third year, Computer Science",
     "skills": ["React", "JavaScript", "SQL"],
     "resumeUrl": "aarthi-balasubramanian-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/aarthi-balasubramanian",
+    "githubUrl": "https://github.com/aarthi-b"
   },
   {
     "id": "stu-2",
@@ -21,7 +23,9 @@
     "year": "Final year, Information Technology",
     "skills": ["Node", "SQL", "JavaScript"],
     "resumeUrl": "rohan-deshpande-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/rohan-deshpande",
+    "githubUrl": "https://github.com/rohan-d"
   },
   {
     "id": "stu-3",
@@ -33,7 +37,9 @@
     "year": "Third year, Electronics and Communication",
     "skills": ["Python", "SQL"],
     "resumeUrl": "meghna-sarangi-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "",
+    "githubUrl": "https://github.com/meghna-s"
   },
   {
     "id": "stu-4",
@@ -45,7 +51,9 @@
     "year": "Second year, Computer Science",
     "skills": [],
     "resumeUrl": "",
-    "availableForInternships": false
+    "availableForInternships": false,
+    "linkedinUrl": "",
+    "githubUrl": ""
   },
   {
     "id": "stu-5",
@@ -57,7 +65,9 @@
     "year": "Final year, Computer Science",
     "skills": ["React", "TypeScript", "Node", "SQL", "Testing"],
     "resumeUrl": "priyadarshini-v-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/priyadarshini-v",
+    "githubUrl": "https://github.com/priya-v"
   },
   {
     "id": "stu-6",
@@ -69,7 +79,9 @@
     "year": "Third year, Mechanical Engineering",
     "skills": ["Python", "Data analysis"],
     "resumeUrl": "devansh-kothari-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/devansh-kothari",
+    "githubUrl": ""
   },
   {
     "id": "stu-7",
@@ -81,7 +93,9 @@
     "year": "Third year, Computer Science",
     "skills": ["React", "CSS", "JavaScript"],
     "resumeUrl": "sneha-rautela-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/sneha-rautela",
+    "githubUrl": "https://github.com/sneha-r"
   },
   {
     "id": "stu-8",
@@ -93,7 +107,9 @@
     "year": "Final year, Information Technology",
     "skills": ["Node", "SQL", "Docker"],
     "resumeUrl": "karthik-ponnusamy-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "",
+    "githubUrl": "https://github.com/karthik-p"
   },
   {
     "id": "stu-9",
@@ -105,7 +121,9 @@
     "year": "Third year, Computer Science",
     "skills": ["JavaScript", "React"],
     "resumeUrl": "fatima-ansari-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/fatima-ansari",
+    "githubUrl": "https://github.com/fatima-ansari"
   },
   {
     "id": "stu-10",
@@ -117,6 +135,8 @@
     "year": "Second year, Computer Science",
     "skills": ["JavaScript"],
     "resumeUrl": "nachiket-bhalerao-resume.pdf",
-    "availableForInternships": true
+    "availableForInternships": true,
+    "linkedinUrl": "https://linkedin.com/in/nachiket-bhalerao",
+    "githubUrl": ""
   }
 ]
