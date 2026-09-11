@@ -1,0 +1,514 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+/*
+ * RISE design system.
+ * Warm paper canvas, one saturated accent per portal (set on the portal shell
+ * via --accent / --accent-soft), Fraunces for display headings, Inter for UI.
+ */
+
+@theme inline {
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-strong: var(--surface-strong);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-student: var(--student-accent);
+  --color-student-soft: var(--student-accent-soft);
+  --color-institution: var(--institution-accent);
+  --color-institution-soft: var(--institution-accent-soft);
+  --color-organization: var(--organization-accent);
+  --color-organization-soft: var(--organization-accent-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-on-dark: var(--on-dark);
+
+  /* adaptive value scale — colour says how good the number is */
+  --color-score-weak: var(--score-weak);
+  --color-score-weak-soft: var(--score-weak-soft);
+  --color-score-mid: var(--score-mid);
+  --color-score-mid-soft: var(--score-mid-soft);
+  --color-score-good: var(--score-good);
+  --color-score-good-soft: var(--score-good-soft);
+  --color-score-high: var(--score-high);
+  --color-score-high-soft: var(--score-high-soft);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --canvas: #fbf8f2;
+  --surface: #ffffff;
+  --surface-soft: #f3efe4;
+  --surface-strong: #eae4d3;
+  --ink: #141311;
+  --body: #4a463f;
+  --muted: #8a8478;
+  --hairline: #e4decf;
+
+  --student-accent: #8c7bc9;
+  --student-accent-soft: #ede9f7;
+  --institution-accent: #2b4a47;
+  --institution-accent-soft: #e3eae8;
+  --organization-accent: #c1502e;
+  --organization-accent-soft: #f6e7df;
+
+  --success: #3f7a5a;
+  --warning: #b8863a;
+  --error: #b4432f;
+  --on-dark: #fbf8f2;
+
+  /* value scale: clay → amber → pine → emerald */
+  --score-weak: #b8442d;
+  --score-weak-from: #e0764f;
+  --score-weak-soft: #f8e6de;
+  --score-mid: #bc832c;
+  --score-mid-from: #e0ae4c;
+  --score-mid-soft: #f8eed9;
+  --score-good: #3d7a58;
+  --score-good-from: #6aa87c;
+  --score-good-soft: #e2efe6;
+  --score-high: #146b57;
+  --score-high-from: #3fae86;
+  --score-high-soft: #dcefe7;
+
+  /* categorical series for charts */
+  --series-1: #2b4a47;
+  --series-2: #c1502e;
+  --series-3: #8c7bc9;
+  --series-4: #bc832c;
+  --series-5: #3f8a8a;
+
+  /* default accent (landing / auth) */
+  --accent: #2b4a47;
+  --accent-soft: #e3eae8;
+  --accent-ink: #fbf8f2;
+}
+
+[data-portal="student"] {
+  --accent: var(--student-accent);
+  --accent-soft: var(--student-accent-soft);
+  --accent-ink: #ffffff;
+}
+[data-portal="institution"] {
+  --accent: var(--institution-accent);
+  --accent-soft: var(--institution-accent-soft);
+  --accent-ink: #fbf8f2;
+}
+[data-portal="organization"] {
+  --accent: var(--organization-accent);
+  --accent-soft: var(--organization-accent-soft);
+  --accent-ink: #fbf8f2;
+}
+
+@layer base {
+  * {
+    border-color: var(--hairline);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--canvas);
+    color: var(--body);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  button {
+    font-family: inherit;
+  }
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 540;
+  font-size: 40px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  @media (min-width: 640px) {
+    font-size: 56px;
+  }
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 540;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  @media (min-width: 640px) {
+    font-size: 40px;
+  }
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 520;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  @media (min-width: 640px) {
+    font-size: 28px;
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility raised {
+  box-shadow:
+    0 1px 2px rgba(20, 19, 17, 0.04),
+    0 8px 24px rgba(20, 19, 17, 0.06);
+}
+
+@utility hairline {
+  border: 1px solid var(--hairline);
+}
+
+@utility active-topline {
+  border-top: 1px solid var(--accent);
+}
+
+@utility scroll-strip {
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes rise-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rise-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+@keyframes rise-pulse-cell {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+@keyframes rise-slide-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes rise-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes rise-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rise-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@utility anim-in {
+  animation: rise-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@utility anim-fade {
+  animation: rise-fade 240ms ease-out both;
+}
+@utility anim-shake {
+  animation: rise-shake 250ms ease-in-out;
+}
+@utility shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--surface-soft) 0%,
+    var(--surface-strong) 50%,
+    var(--surface-soft) 100%
+  );
+  background-size: 200% 100%;
+  animation: rise-shimmer 1.8s linear infinite;
+}
+
+/* ------------------------- depth, texture, layout ------------------------ */
+
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(20, 19, 17, 0.055) 0.6px, transparent 0.7px);
+    background-size: 4px 4px;
+  }
+}
+
+@utility dotfield {
+  background-image: radial-gradient(var(--hairline) 1px, transparent 1.4px);
+  background-size: 16px 16px;
+}
+
+@utility band {
+  background:
+    radial-gradient(120% 100% at 0% 0%, var(--accent-soft) 0%, transparent 62%),
+    linear-gradient(180deg, var(--surface-soft) 0%, var(--canvas) 100%);
+}
+
+@utility band-warm {
+  background: linear-gradient(180deg, var(--canvas) 0%, var(--surface-soft) 100%);
+}
+
+@utility raised-sm {
+  box-shadow: 0 1px 2px rgba(20, 19, 17, 0.05);
+}
+
+@utility raised-lg {
+  box-shadow:
+    0 2px 4px rgba(20, 19, 17, 0.05),
+    0 18px 44px -14px rgba(20, 19, 17, 0.16);
+}
+
+@utility lift {
+  transition:
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms ease,
+    border-color 200ms ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 2px 4px rgba(20, 19, 17, 0.05),
+      0 18px 40px -16px rgba(20, 19, 17, 0.18);
+    border-color: color-mix(in oklab, var(--accent) 34%, var(--hairline));
+  }
+}
+
+@utility zebra {
+  &:nth-child(even) {
+    background: color-mix(in oklab, var(--surface-soft) 55%, var(--surface));
+  }
+}
+
+@utility eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@utility rule-accent {
+  &::before {
+    content: "";
+    display: block;
+    width: 34px;
+    height: 3px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+}
+
+/* ------------------------------ motion layer ----------------------------- */
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.4deg);
+  }
+}
+@keyframes rise-float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  
+  }
+  50% {
+    transform: translate(8px, 12px);
+  }
+}
+@keyframes rise-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes rise-draw {
+  from {
+    stroke-dashoffset: var(--draw-len, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes rise-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes rise-sheen {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(220%);
+  }
+}
+@keyframes rise-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@utility anim-float {
+  animation: rise-float 7s ease-in-out infinite;
+}
+@utility anim-float-slow {
+  animation: rise-float-slow 13s ease-in-out infinite;
+}
+@utility anim-pop {
+  animation: rise-pop 460ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@utility anim-draw {
+  stroke-dasharray: var(--draw-len, 1000);
+  animation: rise-draw 1500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@utility marquee {
+  animation: rise-marquee 34s linear infinite;
+}
+@utility anim-grow {
+  transform-origin: bottom;
+  animation: rise-grow 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility sheen {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: rise-sheen 2.6s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

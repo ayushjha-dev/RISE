@@ -1,0 +1,92 @@
+[
+  {
+    "id": "app-1",
+    "studentId": "stu-1",
+    "internshipId": "int-1",
+    "status": "shortlisted",
+    "appliedOn": "2026-08-26",
+    "scoreBySubtopic": { "JavaScript": 80, "React": 100, "SQL": 60 },
+    "overallScore": 80
+  },
+  {
+    "id": "app-2",
+    "studentId": "stu-5",
+    "internshipId": "int-1",
+    "status": "applied",
+    "appliedOn": "2026-08-28",
+    "scoreBySubtopic": { "JavaScript": 100, "React": 100, "SQL": 100 },
+    "overallScore": 100
+  },
+  {
+    "id": "app-3",
+    "studentId": "stu-7",
+    "internshipId": "int-1",
+    "status": "applied",
+    "appliedOn": "2026-09-01",
+    "scoreBySubtopic": { "JavaScript": 60, "React": 80, "SQL": 20 },
+    "overallScore": 53
+  },
+  {
+    "id": "app-4",
+    "studentId": "stu-10",
+    "internshipId": "int-1",
+    "status": "rejected",
+    "appliedOn": "2026-09-03",
+    "scoreBySubtopic": { "JavaScript": 20, "React": 0, "SQL": 0 },
+    "overallScore": 7
+  },
+  {
+    "id": "app-5",
+    "studentId": "stu-9",
+    "internshipId": "int-5",
+    "status": "applied",
+    "appliedOn": "2026-09-09",
+    "scoreBySubtopic": { "JavaScript": 80, "React": 60, "SQL": 40 },
+    "overallScore": 60
+  },
+  {
+    "id": "app-6",
+    "studentId": "stu-2",
+    "internshipId": "int-8",
+    "status": "shortlisted",
+    "appliedOn": "2026-07-04",
+    "scoreBySubtopic": { "JavaScript": 80, "React": 40, "SQL": 100 },
+    "overallScore": 73
+  },
+  {
+    "id": "app-7",
+    "studentId": "stu-8",
+    "internshipId": "int-2",
+    "status": "applied",
+    "appliedOn": "2026-09-04",
+    "scoreBySubtopic": { "JavaScript": 60, "React": 40, "SQL": 80 },
+    "overallScore": 60
+  },
+  {
+    "id": "app-8",
+    "studentId": "stu-3",
+    "internshipId": "int-3",
+    "status": "shortlisted",
+    "appliedOn": "2026-08-14",
+    "scoreBySubtopic": { "JavaScript": 40, "React": 20, "SQL": 100 },
+    "overallScore": 53
+  },
+  {
+    "id": "app-9",
+    "studentId": "stu-6",
+    "internshipId": "int-3",
+    "status": "rejected",
+    "appliedOn": "2026-08-19",
+    "scoreBySubtopic": { "JavaScript": 20, "React": 20, "SQL": 60 },
+    "overallScore": 33
+  },
+  {
+    "id": "app-10",
+    "studentId": "stu-1",
+    "internshipId": "int-4",
+    "status": "applied",
+    "appliedOn": "2026-09-06",
+    "scoreBySubtopic": { "JavaScript": 80, "React": 100, "SQL": 60 },
+    "overallScore": 80
+  }
+]

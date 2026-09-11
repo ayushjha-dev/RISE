@@ -1,0 +1,122 @@
+[
+  {
+    "id": "stu-1",
+    "name": "Aarthi Balasubramanian",
+    "email": "aarthi.b@sreekamakshi.ac.in",
+    "abcId": "482913076541",
+    "abcVerified": true,
+    "institutionId": "inst-2",
+    "year": "Third year, Computer Science",
+    "skills": ["React", "JavaScript", "SQL"],
+    "resumeUrl": "aarthi-balasubramanian-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-2",
+    "name": "Rohan Deshpande",
+    "email": "rohan.deshpande@vidyaniketan.edu.in",
+    "abcId": "739105482263",
+    "abcVerified": true,
+    "institutionId": "inst-1",
+    "year": "Final year, Information Technology",
+    "skills": ["Node", "SQL", "JavaScript"],
+    "resumeUrl": "rohan-deshpande-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-3",
+    "name": "Meghna Sarangi",
+    "email": "meghna.sarangi@bdujaipur.ac.in",
+    "abcId": "610284937115",
+    "abcVerified": true,
+    "institutionId": "inst-3",
+    "year": "Third year, Electronics and Communication",
+    "skills": ["Python", "SQL"],
+    "resumeUrl": "meghna-sarangi-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-4",
+    "name": "Ibrahim Sait",
+    "email": "ibrahim.sait@sreekamakshi.ac.in",
+    "abcId": "550728194302",
+    "abcVerified": false,
+    "institutionId": "inst-2",
+    "year": "Second year, Computer Science",
+    "skills": [],
+    "resumeUrl": "",
+    "availableForInternships": false
+  },
+  {
+    "id": "stu-5",
+    "name": "Priyadarshini Venkataraghavan",
+    "email": "priyadarshini.venkataraghavan@vidyaniketan.edu.in",
+    "abcId": "884019273650",
+    "abcVerified": true,
+    "institutionId": "inst-1",
+    "year": "Final year, Computer Science",
+    "skills": ["React", "TypeScript", "Node", "SQL", "Testing"],
+    "resumeUrl": "priyadarshini-v-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-6",
+    "name": "Devansh Kothari",
+    "email": "devansh.kothari@bdujaipur.ac.in",
+    "abcId": "217640398512",
+    "abcVerified": true,
+    "institutionId": "inst-3",
+    "year": "Third year, Mechanical Engineering",
+    "skills": ["Python", "Data analysis"],
+    "resumeUrl": "devansh-kothari-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-7",
+    "name": "Sneha Rautela",
+    "email": "sneha.rautela@vidyaniketan.edu.in",
+    "abcId": "903417265088",
+    "abcVerified": true,
+    "institutionId": "inst-1",
+    "year": "Third year, Computer Science",
+    "skills": ["React", "CSS", "JavaScript"],
+    "resumeUrl": "sneha-rautela-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-8",
+    "name": "Karthik Ponnusamy",
+    "email": "karthik.p@sreekamakshi.ac.in",
+    "abcId": "146802957331",
+    "abcVerified": true,
+    "institutionId": "inst-2",
+    "year": "Final year, Information Technology",
+    "skills": ["Node", "SQL", "Docker"],
+    "resumeUrl": "karthik-ponnusamy-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-9",
+    "name": "Fatima Zohra Ansari",
+    "email": "fatima.ansari@bdujaipur.ac.in",
+    "abcId": "372915608244",
+    "abcVerified": true,
+    "institutionId": "inst-3",
+    "year": "Third year, Computer Science",
+    "skills": ["JavaScript", "React"],
+    "resumeUrl": "fatima-ansari-resume.pdf",
+    "availableForInternships": true
+  },
+  {
+    "id": "stu-10",
+    "name": "Nachiket Bhalerao",
+    "email": "nachiket.bhalerao@vidyaniketan.edu.in",
+    "abcId": "658201473926",
+    "abcVerified": true,
+    "institutionId": "inst-1",
+    "year": "Second year, Computer Science",
+    "skills": ["JavaScript"],
+    "resumeUrl": "nachiket-bhalerao-resume.pdf",
+    "availableForInternships": true
+  }
+]
