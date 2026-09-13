@@ -2,7 +2,7 @@
 
 **Skill-matched internships for verified students**
 
-RISE is an internship hiring platform that puts skills first. Students verify their academic identity once through their Academic Bank of Credits (ABC) ID, match to internships based on their actual capabilities, and get ranked by assessment scores — not résumés.
+RISE is an internship hiring platform that puts skills first. Students verify their academic identity once through their Academic Bank of Credits (ABC) ID, match to internships based on their actual capabilities, and get ranked by assessment scores — not résumé
 
 ## What makes RISE different
 
