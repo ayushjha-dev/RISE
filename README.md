@@ -1,4 +1,4 @@
-# RISE Connect
+# RISE
 
 **Skill-matched internships for verified students**
 
