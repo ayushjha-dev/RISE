@@ -1,4 +1,4 @@
-# RISE com
+# RISE 
 
 **Skill-matched internships for verified students**
 
