@@ -43,11 +43,20 @@ AI description generator is optional.
 
 ### Environment variables
 
-| Variable          | Required? | Purpose                                                                                                                                                                                |
-| ----------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `LOVABLE_API_KEY` | Optional  | Enables AI-drafted internship descriptions at `/organization/post`. Without it the button reports "The description generator isn't configured yet" and the manual form works normally. |
+Copy [`.env.example`](.env.example) to `.env`. Every variable is **optional**:
+with none set the app runs fully, and the AI description generator reports "The
+description generator isn't configured yet" while the manual posting form works
+normally.
 
-Never commit secrets.
+| Variable      | Purpose                                                            |
+| ------------- | ------------------------------------------------------------------ |
+| `AI_API_KEY`  | Bearer token for an OpenAI-compatible `/chat/completions` endpoint |
+| `AI_BASE_URL` | Base URL including `/v1`, no trailing slash                        |
+| `AI_MODEL`    | Provider-specific model id, e.g. `gemini-2.0-flash`                |
+
+Any OpenAI-compatible provider works (Gemini, OpenAI, OpenRouter, Groq, Together,
+a self-hosted vLLM). These are read only on the server. `.env` is gitignored, so
+never commit secrets.
 
 ## Project layout
 

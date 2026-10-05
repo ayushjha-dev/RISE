@@ -20,7 +20,8 @@ dist-ssr
 .wrangler/
 .dev.vars
 
-# Editor directories and files
+# Editor / tooling metadata (not part of the app)
+.lovable/
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -30,3 +31,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local environment files - never commit secrets
+.env
+.env.*
+!.env.example

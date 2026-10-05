@@ -71,11 +71,11 @@ In Tailwind these are exposed as `bg-canvas`, `text-ink`, `text-muted`,
 
 ## 3. Portal accents
 
-| Portal                       | Token                   | Value     | Soft      | Accent ink |
-| ---------------------------- | ----------------------- | --------- | --------- | ---------- |
-| 🎓 Student (Lavender)        | `--student-accent`      | `#8c7bc9` | `#ede9f7` | `#ffffff`  |
-| 🏛️ Institution (Pine)        | `--institution-accent`  | `#2b4a47` | `#e3eae8` | `#fbf8f2`  |
-| 🏢 Organization (Terracotta) | `--organization-accent` | `#c1502e` | `#f6e7df` | `#fbf8f2`  |
+| Portal                    | Token                   | Value     | Soft      | Accent ink |
+| ------------------------- | ----------------------- | --------- | --------- | ---------- |
+| Student (Lavender)        | `--student-accent`      | `#8c7bc9` | `#ede9f7` | `#ffffff`  |
+| Institution (Pine)        | `--institution-accent`  | `#2b4a47` | `#e3eae8` | `#fbf8f2`  |
+| Organization (Terracotta) | `--organization-accent` | `#c1502e` | `#f6e7df` | `#fbf8f2`  |
 
 `--accent` is the _active_ variable. `PortalShell` sets `data-portal="<role>"` on
 its root, and the cascade does the rest:
@@ -306,10 +306,10 @@ their owners.
 
 The interface is written in plain, specific English. Existing examples:
 
-- ✅ "That ID isn't 12 digits — check the number on your ABC card."
-- ✅ "The generator is busy right now — try again in a moment."
-- ❌ "Oops! Something went wrong 😅"
-- ❌ "Invalid input"
+- Good: "That ID isn't 12 digits — check the number on your ABC card."
+- Good: "The generator is busy right now — try again in a moment."
+- Avoid: "Oops! Something went wrong"
+- Avoid: "Invalid input"
 
 Rules: second person, present tense, no emoji in product copy, no exclamation
 marks, always name the next action, never blame the user. The AI system prompt

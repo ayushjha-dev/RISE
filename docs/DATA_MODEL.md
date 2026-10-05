@@ -8,7 +8,7 @@ eventually be a real database. Types are declared in `src/lib/api.ts` and
 `src/lib/store.ts` — there are no runtime schema validators on the read path
 (the one place validation matters, the AI server function, uses Zod).
 
-> ⚠️ All names, colleges and companies in the seed data are **fictional**.
+> Note: All names, colleges and companies in the seed data are **fictional**.
 
 ## Contents
 
@@ -40,7 +40,7 @@ eventually be a real database. Types are declared in `src/lib/api.ts` and
                │ N
         ┌──────▼───────┐        ┌───────────────┐        ┌──────────────┐
         │    Student   │───────►│ Application   │◄───────│  Internship  │
-        │ abcId ✓      │  N:1   │ scoreBySubtopic│  N:1   │ skillsRequired│
+        │ abcId      │  N:1   │ scoreBySubtopic│  N:1   │ skillsRequired│
         │ skills[]     │        │ overallScore  │        │ assessmentId │
         │ institutionId│        │ status        │        └──────┬───────┘
         └──────────────┘        └───────┬───────┘               │ N:1
@@ -235,13 +235,13 @@ are unverified in this prototype, which is a real gap for a hiring product.
 `src/lib/store.ts` holds one `State` object, persisted whole to `localStorage`
 under the key **`rise.state.v1`**.
 
-| Field              | Type            | Seeded?     | Notes                                    |
-| ------------------ | --------------- | ----------- | ---------------------------------------- |
-| `session`          | `Session`       | `null`      | Signed-in identity                       |
-| `applications`     | `Application[]` | ✅ 10 seeds | The shared record                        |
-| `extraInternships` | `Internship[]`  | `[]`        | Prepended to seeds in `internshipsQuery` |
-| `extraStudents`    | `Student[]`     | `[]`        | Appended to seeds in `studentsQuery`     |
-| `seenMilestones`   | `string[]`      | `[]`        | Dedupes one-time celebrations            |
+| Field              | Type            | Seeded?       | Notes                                    |
+| ------------------ | --------------- | ------------- | ---------------------------------------- |
+| `session`          | `Session`       | `null`        | Signed-in identity                       |
+| `applications`     | `Application[]` | yes, 10 seeds | The shared record                        |
+| `extraInternships` | `Internship[]`  | `[]`          | Prepended to seeds in `internshipsQuery` |
+| `extraStudents`    | `Student[]`     | `[]`          | Appended to seeds in `studentsQuery`     |
+| `seenMilestones`   | `string[]`      | `[]`          | Dedupes one-time celebrations            |
 
 `extraInternships` and `extraStudents` exist because the UI can create roles
 (`/organization/post`) and accounts (`/register`) but there is no admin CRUD

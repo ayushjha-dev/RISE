@@ -169,7 +169,34 @@ becomes a type error.
 Mutable, user-owned state: the session, applications, internships created at
 runtime, students registered at runtime, and seen milestones.
 
-````ts
+```ts
+useSyncExternalStore(
+  subscribe,
+  () => select(state),
+  () => select(initial),
+);
+```
+
+The third argument is the **server snapshot**. It returns `initial` state during
+SSR, which is what makes the store hydration-safe: server HTML and first client
+render agree, then `hydrateStore()` rehydrates from `localStorage` in an effect.
+
+**Persistence:** the whole state is serialized to `localStorage` under
+`rise.state.v1` on every mutation, wrapped in try/catch so private-mode browsers
+degrade quietly instead of throwing.
+
+**Actions** are plain functions on an `actions` object, never setters exposed to
+components. Each validates its own precondition: `apply()` returns `false` if the
+application already exists rather than creating a duplicate, and
+`markMilestone()` returns `false` if already seen. Callers can therefore render
+"Already applied" without re-deriving that fact.
+
+### Why not a state library
+
+Redux/Zustand would add a dependency and an abstraction for a state shape that
+fits in 170 lines. The trade-off: no devtools time-travel, and discipline is
+enforced by convention (only `actions` mutates).
+
 ## 6. The data layer
 
 `src/data/*.json` are **immutable seed snapshots**. `src/lib/api.ts` composes
@@ -177,8 +204,11 @@ them with runtime additions and wraps each read in an artificial delay:
 
 ```ts
 const latency = (ms = 260) => new Promise((r) => setTimeout(r, ms));
-async function read<T>(value: () => T, ms?: number) { await latency(ms); return value(); }
-````
+async function read<T>(value: () => T, ms?: number) {
+  await latency(ms);
+  return value();
+}
+```
 
 That delay is the most important line in the file. It forces every screen to
 render a skeleton before data, so the loading states you see are the states
@@ -233,7 +263,59 @@ charts stay readable.
 
 ## 8. Server functions
 
-`src/lib/jd.functions.ts` holds the only real network call in RISE.
+`src/lib/jd.functions.ts` holds the only outbound network call in RISE: an LLM
+drafts an internship description.
+
+### Provider-agnostic by design
+
+The endpoint is not hard-coded. Three environment variables select any
+OpenAI-compatible `/chat/completions` provider:
+
+| Variable      | Meaning                                     |
+| ------------- | ------------------------------------------- |
+| `AI_API_KEY`  | Bearer token for the endpoint               |
+| `AI_BASE_URL` | Base URL including `/v1`, no trailing slash |
+| `AI_MODEL`    | Provider-specific model id                  |
+
+That covers Gemini's OpenAI-compatible endpoint, OpenAI, OpenRouter, Groq,
+Together, or a self-hosted vLLM, with no code change. All three are optional:
+when absent, `isGenerationConfigured()` reports false and the posting form falls
+back to manual entry. See [`.env.example`](../.env.example).
+
+```ts
+export const generateJd = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => Input.parse(data))
+  .handler(async ({ data }): Promise<GeneratedJd> => {
+    const { apiKey, baseUrl, model } = readConfig();
+    if (!apiKey || !baseUrl || !model) {
+      throw new Error("The description generator isn't configured yet.");
+    }
+    /* ... */
+  });
+```
+
+Design points worth copying:
+
+- **The key never reaches the browser.** `readConfig()` reads `process.env` inside
+  the handler, so it executes on the server only.
+- **Zod on the way in.** `role` is 2-120 chars, `skills` is 1-12 entries. The
+  client cannot smuggle an oversized payload to the model.
+- **Zod on the way out.** The model is asked for JSON and the response is
+  re-parsed and shape-validated. The model is treated as untrusted input, so a
+  truncated or verbose reply becomes a clean error, never a broken screen.
+- **Bounded by a timeout.** `AbortSignal.timeout(20_000)` stops a hung provider
+  from holding the request open.
+- **Every failure has plain language.** `401`/`403` -> "rejected its API
+  credentials, write it manually"; `402` -> "out of credit, write it manually";
+  `429` -> "busy, try again in a moment"; other statuses report the code; a
+  network error names the cause; unparseable output -> "came back malformed".
+  Each message names the **manual fallback**, so the generator being unavailable
+  never dead-ends the flow.
+- The system prompt forbids emoji, marketing adjectives, bullet lists and
+  headings, so descriptions read like a person wrote them.
+
+The client calls it through `useServerFn` + `useMutation`, so it participates in
+TanStack Query's lifecycle for pending and error state.
 
 ## 9. SSR lifecycle and error handling
 
@@ -272,11 +354,11 @@ here must keep that block.
 
 ### Three client/server error surfaces
 
-| Surface                                | Handles                                                                          |
-| -------------------------------------- | -------------------------------------------------------------------------------- |
-| `notFoundComponent` in `__root.tsx`    | Unknown URLs → styled 404 with a way home                                        |
-| `errorComponent` in `__root.tsx`       | Render errors → `router.invalidate()` + reset, reported via `reportLovableError` |
-| `renderErrorPage()` in `error-page.ts` | Server-side failures, before React ever runs                                     |
+| Surface                                | Handles                                                                         |
+| -------------------------------------- | ------------------------------------------------------------------------------- |
+| `notFoundComponent` in `__root.tsx`    | Unknown URLs → styled 404 with a way home                                       |
+| `errorComponent` in `__root.tsx`       | Render errors → `router.invalidate()` + reset, reported via `reportClientError` |
+| `renderErrorPage()` in `error-page.ts` | Server-side failures, before React ever runs                                    |
 
 ## 10. Build and runtime
 
@@ -287,6 +369,13 @@ React/TanStack dedupe, error-logger plugins and sandbox port detection.
 **Re-adding any of those duplicates plugins and breaks the app.** The only local
 override is redirecting the server entry to `src/server.ts` for SSR error
 recovery.
+
+That package is the one remaining `@lovable.dev` dependency, and it is
+build-time tooling only: it ships no runtime code, makes no network calls,
+and holds no credentials. Removing it means re-declaring all ten plugins
+above by hand, which is deliberate work rather than a cleanup. The
+application code, data layer, AI integration and error pipeline are all
+vendor-neutral.
 
 ### Runtime notes
 
@@ -326,54 +415,5 @@ Things that are intentionally absent, so nobody "fixes" them by accident:
 
 ---
 
-**See also:** [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) ·
+**See also:** [VERIFICATION.md](./VERIFICATION.md), [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) ·
 [DATA_MODEL.md](./DATA_MODEL.md) · [CONTRIBUTING.md](../CONTRIBUTING.md)
-
-```ts
-export const generateJd = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => Input.parse(data))
-  .handler(async ({ data }): Promise<GeneratedJd> => {
-    /* … */
-  });
-```
-
-Design points worth copying:
-
-- **Zod on the way in.** `role` is 2–120 chars, `skills` is 1–12 entries. The
-  client cannot smuggle an oversized payload to the model.
-- **Zod on the way out.** The model is asked for JSON and the response is
-  re-parsed and shape-validated. A truncated or verbose model reply becomes a
-  clean error, never a broken screen.
-- **Every failure has plain language.** `429` → "busy, try again", `402` →
-  "credits exhausted, write it manually", `403` → "AI off, write it manually",
-  unparseable → "came back malformed". Each message names the **manual
-  fallback**, so the AI being unavailable never dead-ends the flow.
-- The system prompt forbids emoji, marketing adjectives, bullet lists and
-  headings — so descriptions read like a person wrote them.
-
-The client calls it through `useServerFn` + `useMutation`, so it participates in
-TanStack Query's lifecycle for pending/error state.
-useSyncExternalStore(subscribe, () => select(state), () => select(initial))
-
-```
-
-The third argument is the **server snapshot**. It returns `initial` state during
-SSR, which is what makes the store hydration-safe: server HTML and first client
-render agree, then `hydrateStore()` rehydrates from `localStorage` in an effect.
-
-**Persistence:** the whole state is serialized to `localStorage` under
-`rise.state.v1` on every mutation, wrapped in try/catch so private-mode browsers
-degrade quietly instead of throwing.
-
-**Actions** are plain functions on an `actions` object, never setters exposed to
-components. Each validates its own precondition — `apply()` returns `false` if the
-application already exists rather than creating a duplicate, and
-`markMilestone()` returns `false` if already seen. Callers can therefore render
-"Already applied" without re-deriving that fact.
-
-### Why not a state library
-
-Redux/Zustand would add a dependency and an abstraction for a state shape that
-fits in 170 lines. The trade-off: no devtools time-travel, and discipline is
-enforced by convention (only `actions` mutates).
-```

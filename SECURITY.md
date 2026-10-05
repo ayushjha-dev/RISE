@@ -19,7 +19,7 @@ Please include:
 We aim to acknowledge reports within **7 days**. Please give maintainers
 reasonable time to release a fix before disclosing publicly.
 
-## ⚠️ Current security posture
+## Current security posture
 
 RISE is a **front-end prototype with a simulated data layer**. It is honest
 about this, and so is this document. Concretely:
