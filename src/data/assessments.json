@@ -1,0 +1,144 @@
+[
+  {
+    "id": "asmt-web",
+    "track": "Web Development",
+    "minutes": 15,
+    "subtopics": [
+      {
+        "name": "JavaScript",
+        "questions": [
+          {
+            "q": "What does Array.prototype.map return?",
+            "options": [
+              "A new array of the same length",
+              "The original array, mutated",
+              "The first matching element",
+              "A boolean"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "q": "Which value is not falsy in JavaScript?",
+            "options": ["0", "\"0\"", "\"\"", "NaN"],
+            "correctIndex": 1
+          },
+          {
+            "q": "What does `await` do inside an async function?",
+            "options": [
+              "Blocks the whole thread until the promise settles",
+              "Pauses that function until the promise settles",
+              "Converts a callback into a promise",
+              "Retries the promise on rejection"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "q": "Which declaration is hoisted and initialised as undefined?",
+            "options": ["let", "const", "var", "class"],
+            "correctIndex": 2
+          },
+          {
+            "q": "What is the result of typeof null?",
+            "options": ["\"null\"", "\"undefined\"", "\"object\"", "\"number\""],
+            "correctIndex": 2
+          }
+        ]
+      },
+      {
+        "name": "React",
+        "questions": [
+          {
+            "q": "When does a useEffect with an empty dependency array run?",
+            "options": [
+              "After every render",
+              "Once after the first render",
+              "Only before unmount",
+              "Never, it is ignored"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "q": "Why does a list of siblings need a stable key?",
+            "options": [
+              "To let React match elements across renders",
+              "To sort the list automatically",
+              "To make the list accessible",
+              "To memoise each child"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "q": "Which statement about state updates is correct?",
+            "options": [
+              "setState mutates the existing state object",
+              "Updates may be batched and applied asynchronously",
+              "State updates always re-render the whole tree",
+              "State can be read synchronously right after setState"
+            ],
+            "correctIndex": 1
+          },
+          {
+            "q": "What is the purpose of useMemo?",
+            "options": [
+              "To skip recomputing a value when inputs are unchanged",
+              "To store values across page reloads",
+              "To replace component state",
+              "To delay a render until data arrives"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "q": "Where should data fetching for a route live in a router-driven app?",
+            "options": [
+              "In a route loader or query, not in a bare useEffect",
+              "In the component's constructor",
+              "In the module's top-level scope",
+              "In an event handler on mount"
+            ],
+            "correctIndex": 0
+          }
+        ]
+      },
+      {
+        "name": "SQL",
+        "questions": [
+          {
+            "q": "Which join keeps rows from the left table with no match on the right?",
+            "options": ["INNER JOIN", "LEFT JOIN", "CROSS JOIN", "SELF JOIN"],
+            "correctIndex": 1
+          },
+          {
+            "q": "Where do you filter on an aggregate such as COUNT(*)?",
+            "options": ["WHERE", "HAVING", "ON", "ORDER BY"],
+            "correctIndex": 1
+          },
+          {
+            "q": "What does an index primarily improve?",
+            "options": [
+              "Read lookups on the indexed columns",
+              "Write throughput on the table",
+              "Storage size of the table",
+              "Transaction isolation level"
+            ],
+            "correctIndex": 0
+          },
+          {
+            "q": "Which clause removes duplicate rows from a result set?",
+            "options": ["DISTINCT", "GROUP", "UNIQUE", "FILTER"],
+            "correctIndex": 0
+          },
+          {
+            "q": "What does a foreign key constraint enforce?",
+            "options": [
+              "That the referenced row exists",
+              "That the column is unique",
+              "That the column is never null",
+              "That values are sorted"
+            ],
+            "correctIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+]

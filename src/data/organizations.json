@@ -1,0 +1,42 @@
+[
+  {
+    "id": "org-1",
+    "name": "Thalir Systems",
+    "industry": "Developer tooling",
+    "city": "Chennai, Tamil Nadu",
+    "email": "hiring@thalirsystems.in",
+    "about": "We build observability tooling for payment infrastructure teams across South Asia. Twenty-eight engineers, four of whom joined as interns."
+  },
+  {
+    "id": "org-2",
+    "name": "Neelkanth Analytics",
+    "industry": "Data and reporting",
+    "city": "Pune, Maharashtra",
+    "email": "people@neelkanth.co.in",
+    "about": "A forty-person analytics studio working with logistics and agritech companies on demand forecasting."
+  },
+  {
+    "id": "org-3",
+    "name": "Anantara Health",
+    "industry": "Health technology",
+    "city": "Hyderabad, Telangana",
+    "email": "talent@anantarahealth.com",
+    "about": "Clinical workflow software used by 210 diagnostic labs. Our engineering team ships weekly."
+  },
+  {
+    "id": "org-4",
+    "name": "Kaveri Mobility",
+    "industry": "Electric vehicles",
+    "city": "Bengaluru, Karnataka",
+    "email": "careers@kaverimobility.in",
+    "about": "Fleet software and charging network operations for commercial electric three-wheelers."
+  },
+  {
+    "id": "org-5",
+    "name": "Prayog Learning Labs",
+    "industry": "Education technology",
+    "city": "Ahmedabad, Gujarat",
+    "email": "join@prayoglabs.in",
+    "about": "Assessment and practice products used by 90,000 undergraduate students in Gujarat and Rajasthan."
+  }
+]

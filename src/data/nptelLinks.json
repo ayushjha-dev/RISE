@@ -1,0 +1,92 @@
+[
+  {
+    "id": "l-1",
+    "skill": "JavaScript",
+    "title": "Modern Application Development with JavaScript",
+    "provider": "NPTEL",
+    "institute": "IIT Madras",
+    "weeks": 12,
+    "url": "https://nptel.ac.in/courses/106106156"
+  },
+  {
+    "id": "l-2",
+    "skill": "JavaScript",
+    "title": "Programming in JavaScript, Asynchronous Patterns",
+    "provider": "Swayam",
+    "institute": "IIT Bombay",
+    "weeks": 8,
+    "url": "https://swayam.gov.in/explorer?searchText=javascript"
+  },
+  {
+    "id": "l-3",
+    "skill": "React",
+    "title": "Front End Development with Component Frameworks",
+    "provider": "Swayam",
+    "institute": "IIIT Bangalore",
+    "weeks": 8,
+    "url": "https://swayam.gov.in/explorer?searchText=front+end+development"
+  },
+  {
+    "id": "l-4",
+    "skill": "React",
+    "title": "Building Interactive Web Interfaces",
+    "provider": "NPTEL",
+    "institute": "IIT Kharagpur",
+    "weeks": 4,
+    "url": "https://nptel.ac.in/courses/106105084"
+  },
+  {
+    "id": "l-5",
+    "skill": "SQL",
+    "title": "Database Management Systems",
+    "provider": "NPTEL",
+    "institute": "IIT Kharagpur",
+    "weeks": 12,
+    "url": "https://nptel.ac.in/courses/106105175"
+  },
+  {
+    "id": "l-6",
+    "skill": "SQL",
+    "title": "Relational Query Design and Optimisation",
+    "provider": "Swayam",
+    "institute": "IIT Madras",
+    "weeks": 6,
+    "url": "https://swayam.gov.in/explorer?searchText=database"
+  },
+  {
+    "id": "l-7",
+    "skill": "Node",
+    "title": "Server Side Development and APIs",
+    "provider": "Swayam",
+    "institute": "IIIT Hyderabad",
+    "weeks": 8,
+    "url": "https://swayam.gov.in/explorer?searchText=web+development"
+  },
+  {
+    "id": "l-8",
+    "skill": "Python",
+    "title": "Programming, Data Structures and Algorithms in Python",
+    "provider": "NPTEL",
+    "institute": "IIT Madras",
+    "weeks": 12,
+    "url": "https://nptel.ac.in/courses/106106145"
+  },
+  {
+    "id": "l-9",
+    "skill": "Testing",
+    "title": "Software Testing and Quality Assurance",
+    "provider": "NPTEL",
+    "institute": "IIT Bangalore",
+    "weeks": 8,
+    "url": "https://nptel.ac.in/courses/106105150"
+  },
+  {
+    "id": "l-10",
+    "skill": "Data analysis",
+    "title": "Data Analytics with Spreadsheets and SQL",
+    "provider": "Swayam",
+    "institute": "IIM Bangalore",
+    "weeks": 6,
+    "url": "https://swayam.gov.in/explorer?searchText=data+analytics"
+  }
+]

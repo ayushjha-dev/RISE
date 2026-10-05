@@ -1,0 +1,35 @@
+[
+  {
+    "id": "inst-1",
+    "name": "Vidyaniketan Institute of Technology, Pune",
+    "aisheCode": "U-0431",
+    "city": "Pune, Maharashtra",
+    "email": "placements@vidyaniketan.edu.in",
+    "studentsEnrolled": 4120,
+    "affiliation": "Affiliated to Savitribai Phule Pune University",
+    "placementOfficer": "Dr. Meenal Deshpande, Training & Placement Officer",
+    "about": "An autonomous engineering institute in Pune with strong industry links across manufacturing and software services."
+  },
+  {
+    "id": "inst-2",
+    "name": "Sree Kamakshi College of Engineering, Coimbatore",
+    "aisheCode": "C-11784",
+    "city": "Coimbatore, Tamil Nadu",
+    "email": "tnp@sreekamakshi.ac.in",
+    "studentsEnrolled": 2870,
+    "affiliation": "Affiliated to Anna University",
+    "placementOfficer": "Prof. R. Karthikeyan, Placement Coordinator",
+    "about": "A Coimbatore engineering college known for its computer science and electronics programmes."
+  },
+  {
+    "id": "inst-3",
+    "name": "Bhagwati Devi University, Jaipur",
+    "aisheCode": "U-0912",
+    "city": "Jaipur, Rajasthan",
+    "email": "careers@bdujaipur.ac.in",
+    "studentsEnrolled": 6540,
+    "affiliation": "Affiliated to the state technical university",
+    "placementOfficer": "Placement Cell",
+    "about": "A state engineering institute placing students across software and core engineering roles."
+  }
+]

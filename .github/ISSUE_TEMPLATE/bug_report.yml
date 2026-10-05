@@ -1,0 +1,101 @@
+name: Bug report
+
+description: Something in RISE does not behave as it should
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. RISE is a front-end prototype — if what you hit
+        is "there is no database", that is expected; see the Project status
+        section of the README.
+
+  - type: dropdown
+    id: portal
+    attributes:
+      label: Portal
+      options:
+        - Landing / auth / register (public)
+        - 🎓 Student portal
+        - 🏛️ Institution portal
+        - 🏢 Organization portal
+        - Not sure / across the app
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocker — cannot use the app at all
+        - High — a main flow is broken
+        - Medium — something is wrong but I can work around it
+        - Low — cosmetic, or a rough edge
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      description: What you were trying to achieve, and what you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include the exact error message if one appeared.
+    validations:
+      required: true
+
+  - type: input
+    id: route
+    attributes:
+      label: Route
+      description: The URL you were on, e.g. /student/internships
+      placeholder: /organization/applicants
+    validations:
+      required: false
+
+  - type: input
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered, starting from a fresh page load.
+      placeholder: |
+        1. Sign in as an organization
+        2. Open /organization/applicants
+        3. Click the first applicant row
+    validations:
+      required: false
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: Paste anything from the browser devtools console. Redact tokens.
+      render: text
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, Node/Bun version.
+      placeholder: Chrome 141 on Windows 11, Bun 1.4.2
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues for this
+          required: true
+        - label: I can reproduce this on a fresh page load
+          required: false

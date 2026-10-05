@@ -1,0 +1,75 @@
+name: Feature request
+description: Suggest an improvement to RISE
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        RISE is an internship platform built around verified identity and
+        per-skill evidence. The most useful issues describe a **problem** rather
+        than a solution.
+
+  - type: dropdown
+    id: portal
+    attributes:
+      label: Which portal does this affect?
+      options:
+        - 🎓 Student portal
+        - 🏛️ Institution portal
+        - 🏢 Organization portal
+        - Public (landing / auth / register)
+        - Cross-cutting — architecture, design system, or data model
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: |
+        Describe the situation a user is in today and what they cannot do.
+        Concrete is better than abstract.
+      placeholder: |
+        A student who scores 40 on SQL sees no indication that this is why they
+        are not being shortlisted, so they cannot tell where to spend a week.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+      description: Optional. A sketch is welcome, but the problem matters more.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the codebase?
+      options:
+        - routes/ — a screen
+        - components/rise/ — UI or design system
+        - lib/ — data, state, or server functions
+        - data/ — seed content
+        - Infrastructure / tooling
+        - Not sure
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: This is not already an open issue
+          required: true
+        - label: This keeps the product's direction — skills over keywords, evidence over résumés
+          required: false
