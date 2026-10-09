@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import applicationsSeed from "@/data/applications.json";
+import internshipsSeed from "@/data/internships.json";
 
 export type Role = "student" | "institution" | "organization";
 
@@ -196,9 +197,31 @@ export const actions = {
     id: string,
     patch: Partial<Omit<Internship, "id" | "orgId" | "assessmentId" | "postedOn">>,
   ) {
-    set({
-      extraInternships: state.extraInternships.map((i) => (i.id === id ? { ...i, ...patch } : i)),
-    });
+    const inExtras = state.extraInternships.some((i) => i.id === id);
+    if (inExtras) {
+      set({
+        extraInternships: state.extraInternships.map((i) => (i.id === id ? { ...i, ...patch } : i)),
+      });
+      return;
+    }
+    // Seed postings live in JSON and can never be written to — promote the patch
+    // into an override record; internshipsQuery dedupes so extras win.
+    const seed = (internshipsSeed as Internship[]).find((i) => i.id === id);
+    if (seed) set({ extraInternships: [{ ...seed, ...patch }, ...state.extraInternships] });
+  },
+  /** Attach a Prarambh set to a posting (seed or org-created). */
+  setInternshipAssessment(id: string, assessmentId: string) {
+    const inExtras = state.extraInternships.some((i) => i.id === id);
+    if (inExtras) {
+      set({
+        extraInternships: state.extraInternships.map((i) =>
+          i.id === id ? { ...i, assessmentId } : i,
+        ),
+      });
+      return;
+    }
+    const seed = (internshipsSeed as Internship[]).find((i) => i.id === id);
+    if (seed) set({ extraInternships: [{ ...seed, assessmentId }, ...state.extraInternships] });
   },
   markMilestone(key: string) {
     if (state.seenMilestones.includes(key)) return false;
