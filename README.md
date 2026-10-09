@@ -144,14 +144,19 @@ It is built on three simple ideas:
 ### The 4-step journey
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart LR
-    A[VERIFY ONCE<br/>12-digit ABC ID<br/>Institution auto-attached] --> B[MATCH BY SKILL<br/>Ranked by skill overlap<br/>e.g. 50% match]
-    B --> C[PROVE IT<br/>Per-subtopic scores<br/>4 colour tiers]
-    C --> D[GET SEEN<br/>Ranked shortlist<br/>Student sees outcome]
-    style A fill:#eef2ff,stroke:#8c7bc9,stroke-width:2px
-    style B fill:#fefce8,stroke:#ca8a04,stroke-width:2px
-    style C fill:#ecfdf5,stroke:#2b4a47,stroke-width:2px
-    style D fill:#fef2f2,stroke:#c1502e,stroke-width:2px
+    A["<b>VERIFY ONCE</b><br/>12-digit ABC ID<br/>Institution auto-attached"]
+    B["<b>MATCH BY SKILL</b><br/>Ranked by skill overlap<br/>e.g. 50% match"]
+    C["<b>PROVE IT</b><br/>Per-subtopic scores<br/>4 colour tiers"]
+    D["<b>GET SEEN</b><br/>Ranked shortlist<br/>Student sees outcome"]
+    A --> B --> C --> D
+    classDef verify fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef match fill:#fbbf24,stroke:#92400e,stroke-width:3px,color:#451a03,font-weight:bold;
+    classDef prove fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef seen fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    class A verify; class B match; class C prove; class D seen;
+    linkStyle 0,1,2 stroke:#141311,stroke-width:3px;
 ```
 
 **The score is a feature, not a verdict.** Overall score = mean of subtopics
@@ -159,7 +164,7 @@ flowchart LR
 
 ## Three Portals, One Ecosystem
 
-Three colour-scoped portals share **one application record**— the student sees status, the employer sees ranked evidence, the college sees the cohort. All at once.
+Three colour-scoped portals share **one application record** — the student sees status, the employer sees ranked evidence, the college sees the cohort. All at once.
 
 | **STUDENT**· Lavender `#8c7bc9` | **INSTITUTION**· Pine `#2b4a47` | **ORGANIZATION**· Terracotta `#c1502e` |
 |:---:|:---:|:---:|
@@ -169,14 +174,21 @@ Three colour-scoped portals share **one application record**— the student sees
 | Apply and track | Conversion funnel | Skill filtering |
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart TB
-    S["STUDENT · Lavender"] --- R[("ONE SHARED APPLICATION RECORD")]
-    I["INSTITUTION · Pine"] --- R
-    O["ORGANIZATION · Terracotta"] --- R
-    style S fill:#ede9fe,stroke:#8c7bc9,stroke-width:2px
-    style I fill:#dcfce7,stroke:#2b4a47,stroke-width:2px
-    style O fill:#ffedd5,stroke:#c1502e,stroke-width:2px
-    style R fill:#f8fafc,stroke:#0f172a,stroke-width:2px
+    S["<b>STUDENT</b><br/>Lavender · skill matches"]
+    I["<b>INSTITUTION</b><br/>Pine · cohort analytics"]
+    O["<b>ORGANIZATION</b><br/>Terracotta · ranked shortlists"]
+    R[("ONE SHARED<br/>APPLICATION RECORD")]
+    S --- R
+    I --- R
+    O --- R
+    classDef student fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef pine fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef terra fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef record fill:#141311,stroke:#141311,stroke-width:3px,color:#fbf8f2,font-weight:bold;
+    class S student; class I pine; class O terra; class R record;
+    linkStyle 0,1,2 stroke:#141311,stroke-width:3px;
 ```
 
 > Each portal is a colour-scoped section of one application. The shell sets `data-portal`, the accent swaps, and nothing else changes.
@@ -184,14 +196,19 @@ flowchart TB
 ## Detailed Flow — Verify, Match, Prove, Seen
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart LR
-    A["1 VERIFY ONCE<br/>12-digit ABC ID<br/>Institution auto-attached"] --> B["2 MATCH BY SKILL<br/>Ranked by overlap<br/>e.g. 50 percent match"]
-    B --> C["3 PROVE IT<br/>Per-subtopic scores<br/>4 colour tiers"]
-    C --> D["4 GET SEEN<br/>Ranked shortlist<br/>Student sees outcome"]
-    style A fill:#eef2ff,stroke:#8c7bc9,stroke-width:2px
-    style B fill:#fefce8,stroke:#ca8a04,stroke-width:2px
-    style C fill:#ecfdf5,stroke:#2b4a47,stroke-width:2px
-    style D fill:#fef2f2,stroke:#c1502e,stroke-width:2px
+    A["<b>STEP 1 · VERIFY ONCE</b><br/>12-digit ABC ID<br/>Institution auto-attached"]
+    B["<b>STEP 2 · MATCH BY SKILL</b><br/>Ranked by overlap<br/>e.g. 50 percent match"]
+    C["<b>STEP 3 · PROVE IT</b><br/>Per-subtopic scores<br/>4 colour tiers"]
+    D["<b>STEP 4 · GET SEEN</b><br/>Ranked shortlist<br/>Student sees outcome"]
+    A --> B --> C --> D
+    classDef verify fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef match fill:#fbbf24,stroke:#92400e,stroke-width:3px,color:#451a03,font-weight:bold;
+    classDef prove fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef seen fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    class A verify; class B match; class C prove; class D seen;
+    linkStyle 0,1,2 stroke:#141311,stroke-width:3px;
 ```
 
 | Step | What happens | Example |
@@ -215,7 +232,7 @@ boundary is visual, so a weak subtopic cannot be missed:
 | Excellent | `85–100` | `--score-high` · emerald | Ready now |
 
 > A student scoring 100 on React and 41 on SQL is not an “80” candidate.
-> They are a **frontend candidate who needs about a week of SQL**— and the Learning
+> They are a **frontend candidate who needs about a week of SQL** — and the Learning
 > portal surfaces exactly that course first. That is the feedback Aarav never got.
 
 ## Verification and Trust
@@ -229,17 +246,29 @@ boundary is visual, so a weak subtopic cannot be missed:
 | Organization | GSTIN / CIN + domain email | GST registry + email delivery | The employer |
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart TB
-    STU["Student<br/>ABC ID"] --> ABC["ABC authority<br/>confirms identity"]
-    INS["Institution<br/>AISHE code"] --> AIS["AISHE registry<br/>confirms college + domain"]
-    ORG["Organization<br/>GSTIN / CIN"] --> GST["GST registry + domain OTP<br/>confirms employer"]
-    ABC --> TRUST["Trust level gates what each side can see"]
+    STU["<b>Student</b><br/>ABC ID · 12 digits"]
+    INS["<b>Institution</b><br/>AISHE code"]
+    ORG["<b>Organization</b><br/>GSTIN / CIN + domain"]
+    ABC["ABC authority<br/>confirms identity"]
+    AIS["AISHE registry<br/>confirms college + domain"]
+    GST["GST registry + domain OTP<br/>confirms employer"]
+    TRUST["TRUST LEVEL<br/>gates what each side can see"]
+    STU --> ABC
+    INS --> AIS
+    ORG --> GST
+    ABC --> TRUST
     AIS --> TRUST
     GST --> TRUST
-    style STU fill:#ede9fe,stroke:#8c7bc9,stroke-width:2px
-    style INS fill:#dcfce7,stroke:#2b4a47,stroke-width:2px
-    style ORG fill:#ffedd5,stroke:#c1502e,stroke-width:2px
-    style TRUST fill:#f8fafc,stroke:#0f172a,stroke-width:2px
+    classDef student fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef pine fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef terra fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef registry fill:#fbf8f2,stroke:#141311,stroke-width:2px,color:#141311;
+    classDef trust fill:#141311,stroke:#141311,stroke-width:3px,color:#fbf8f2,font-weight:bold;
+    class STU student; class INS pine; class ORG terra;
+    class ABC,AIS,GST registry; class TRUST trust;
+    linkStyle 0,1,2,3,4,5 stroke:#141311,stroke-width:3px;
 ```
 
 > Two details matter more than the rest:
@@ -318,15 +347,24 @@ Full flow, trust levels, API contracts and failure handling: **[docs/VERIFICATIO
 ## Architecture
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart TB
-    B["Browser"] --> R["TanStack Router SSR<br/>22 routes · per-request QueryClient"]
-    R --> J["Local JSON seeds + Query<br/>260ms simulated latency"]
-    R --> S["External store<br/>localStorage persistence"]
-    R --> F["Server Functions<br/>only real I/O · LLM via Zod"]
-    style R fill:#ede9fe,stroke:#8c7bc9,stroke-width:2px
-    style J fill:#fefce8,stroke:#ca8a04,stroke-width:2px
-    style S fill:#ecfdf5,stroke:#2b4a47,stroke-width:2px
-    style F fill:#ffedd5,stroke:#c1502e,stroke-width:2px
+    B["<b>Browser</b><br/>React 19 · paper UI"]
+    R["<b>TanStack Router SSR</b><br/>22 routes · per-request QueryClient"]
+    J["Local JSON seeds + Query<br/>260ms simulated latency"]
+    S["External store<br/>localStorage persistence"]
+    F["<b>Server Functions</b><br/>only real I/O · LLM via Zod"]
+    R --> J
+    R --> S
+    R --> F
+    B --> R
+    classDef entry fill:#141311,stroke:#141311,stroke-width:3px,color:#fbf8f2,font-weight:bold;
+    classDef route fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef data fill:#fbbf24,stroke:#92400e,stroke-width:3px,color:#451a03;
+    classDef store fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff;
+    classDef server fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff;
+    class B entry; class R route; class J data; class S store; class F server;
+    linkStyle 0,1,2,3 stroke:#141311,stroke-width:3px;
 ```
 
 > **The important idea:** the data layer is local JSON, but every read is shaped
@@ -337,16 +375,21 @@ flowchart TB
 ### Layered Choices
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart TB
-    RUN["RUNTIME<br/>Bun 1.4 · lockfile · 24h supply-chain guard"] --> BUILD["BUILD + SERVER<br/>Vite 8 · TanStack Start · Nitro 3 · CSRF + error wrapper"]
-    BUILD --> FRONT["FRONTEND<br/>React 19 · Router 22 routes · Query async reads · TS 5.8 strict"]
-    FRONT --> DS["DESIGN SYSTEM<br/>Tailwind 4.2 @theme · Radix + Lucide · 46 shadcn + 9 RISE"]
-    DS --> DATA["VALIDATION + DATA<br/>Zod both sides · 7 JSON seeds simulate backend"]
-    style RUN fill:#ede9fe,stroke:#8c7bc9,stroke-width:2px
-    style BUILD fill:#fefce8,stroke:#ca8a04,stroke-width:2px
-    style FRONT fill:#ecfdf5,stroke:#2b4a47,stroke-width:2px
-    style DS fill:#ffedd5,stroke:#c1502e,stroke-width:2px
-    style DATA fill:#f8fafc,stroke:#0f172a,stroke-width:2px
+    RUN["<b>RUNTIME</b><br/>Bun 1.4 · lockfile · 24h supply-chain guard"]
+    BUILD["<b>BUILD + SERVER</b><br/>Vite 8 · TanStack Start · Nitro 3 · CSRF + error wrapper"]
+    FRONT["<b>FRONTEND</b><br/>React 19 · Router 22 routes · Query async reads · TS 5.8 strict"]
+    DS["<b>DESIGN SYSTEM</b><br/>Tailwind 4.2 @theme · Radix + Lucide · 46 shadcn + 9 RISE"]
+    DATA["<b>VALIDATION + DATA</b><br/>Zod both sides · 7 JSON seeds simulate backend"]
+    RUN --> BUILD --> FRONT --> DS --> DATA
+    classDef run fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef build fill:#fbbf24,stroke:#92400e,stroke-width:3px,color:#451a03,font-weight:bold;
+    classDef front fill:#2b4a47,stroke:#0f2422,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef ds fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef data fill:#141311,stroke:#141311,stroke-width:3px,color:#fbf8f2,font-weight:bold;
+    class RUN run; class BUILD build; class FRONT front; class DS ds; class DATA data;
+    linkStyle 0,1,2,3 stroke:#141311,stroke-width:3px;
 ```
 
 Each layer depends only on the one below it:
@@ -443,14 +486,21 @@ Full token reference and component inventory: **[docs/DESIGN_SYSTEM.md](docs/DES
 > The join that makes the platform work is **`Application`**:
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Inter, system-ui, sans-serif', 'lineColor': '#141311'}}}%%
 flowchart LR
-    STU["Student 1 ---"] --> APP[("Application<br/>status · scoreBySubtopic<br/>overallScore = mean")]
-    INT["--- Internship 1"] --> APP
-    APP --> NOTE["one record<br/>read by all three portals"]
-    style STU fill:#ede9fe,stroke:#8c7bc9,stroke-width:2px
-    style INT fill:#ffedd5,stroke:#c1502e,stroke-width:2px
-    style APP fill:#fefce8,stroke:#ca8a04,stroke-width:2px
-    style NOTE fill:#f8fafc,stroke:#0f172a,stroke-width:2px
+    STU["<b>Student</b><br/>1 record"]
+    INT["<b>Internship</b><br/>1 posting"]
+    APP[("<b>Application</b><br/>status · scoreBySubtopic<br/>overallScore = mean")]
+    NOTE["<b>One record</b><br/>read by all three portals"]
+    STU --> APP
+    INT --> APP
+    APP --> NOTE
+    classDef stu fill:#8c7bc9,stroke:#4c3a8c,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef int fill:#c1502e,stroke:#7c2d12,stroke-width:3px,color:#fff,font-weight:bold;
+    classDef app fill:#fbbf24,stroke:#92400e,stroke-width:3px,color:#451a03,font-weight:bold;
+    classDef note fill:#141311,stroke:#141311,stroke-width:3px,color:#fbf8f2,font-weight:bold;
+    class STU stu; class INT int; class APP app; class NOTE note;
+    linkStyle 0,1,2 stroke:#141311,stroke-width:3px;
 ```
 
 Field-by-field reference in **[docs/DATA_MODEL.md](docs/DATA_MODEL.md)**.
