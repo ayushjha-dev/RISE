@@ -301,7 +301,7 @@ function StudentDashboard() {
                           <Link
                             to="/student/report/$internshipId"
                             params={{ internshipId: a.internshipId }}
-                            aria-label="Open assessment report"
+                            aria-label="Open Prarambh report"
                           >
                             <ScoreRing value={a.overallScore} size={52} />
                           </Link>
@@ -311,7 +311,7 @@ function StudentDashboard() {
                             params={{ internshipId: a.internshipId }}
                           >
                             <Button size="sm" variant="secondary">
-                              Take assessment
+                              Take Prarambh
                             </Button>
                           </Link>
                         )}

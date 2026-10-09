@@ -9,13 +9,13 @@ import { PageTitle } from "@/components/rise/shell";
 export const Route = createFileRoute("/student/report/$internshipId")({
   head: () => ({
     meta: [
-      { title: "Your assessment report — RISE" },
+      { title: "Your Prarambh report — RISE" },
       {
         name: "description",
         content:
           "See how you scored on each subtopic, with a plain-language takeaway and courses for the weakest areas.",
       },
-      { property: "og:title", content: "Your assessment report — RISE" },
+      { property: "og:title", content: "Your Prarambh report — RISE" },
       {
         property: "og:description",
         content: "Per-subtopic scores with a plain-language takeaway.",
@@ -51,13 +51,13 @@ function ReportPage() {
   if (!application || entries.length === 0) {
     return (
       <div>
-        <PageTitle title="Assessment report" />
+        <PageTitle title="Prarambh report" />
         <EmptyState
           variant="chart"
-          title="There's no report for this role yet — take the assessment and your per-subtopic scores appear here."
+          title="There's no report for this role yet — take Prarambh and your per-subtopic scores appear here."
           action={
             <Link to="/student/assessment/$internshipId" params={{ internshipId }}>
-              <Button size="sm">Take the assessment</Button>
+              <Button size="sm">Take Prarambh</Button>
             </Link>
           }
         />

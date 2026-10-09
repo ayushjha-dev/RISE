@@ -29,10 +29,30 @@ export type Internship = {
   postedOn: string;
 };
 
+export type Question = {
+  q: string;
+  options: string[];
+  correctIndex: number;
+};
+
+export type Subtopic = {
+  name: string;
+  questions: Question[];
+};
+
+export type Assessment = {
+  id: string;
+  track: string;
+  minutes: number;
+  subtopics: Subtopic[];
+  orgId?: string | undefined;
+};
+
 type State = {
   session: Session;
   applications: Application[];
   extraInternships: Internship[];
+  extraAssessments: Assessment[];
   extraStudents: {
     id: string;
     name: string;
@@ -56,6 +76,7 @@ const initial: State = {
   session: null,
   applications: applicationsSeed as Application[],
   extraInternships: [],
+  extraAssessments: [],
   extraStudents: [],
   seenMilestones: [],
 };
@@ -167,6 +188,9 @@ export const actions = {
   },
   addInternship(internship: Internship) {
     set({ extraInternships: [internship, ...state.extraInternships] });
+  },
+  addAssessment(assessment: Assessment) {
+    set({ extraAssessments: [assessment, ...state.extraAssessments] });
   },
   updateInternship(
     id: string,
