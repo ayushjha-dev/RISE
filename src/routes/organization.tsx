@@ -13,6 +13,7 @@ function OrganizationLayout() {
         { to: "/organization", label: "Dashboard", icon: "dashboard" },
         { to: "/organization/applicants", label: "Applicants", icon: "students" },
         { to: "/organization/post", label: "Post", icon: "plus" },
+        { to: "/organization/questions", label: "Prarambh", icon: "clipboard" },
         { to: "/organization/profile", label: "Profile", icon: "building" },
       ]}
     >

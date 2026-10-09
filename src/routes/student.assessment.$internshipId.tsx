@@ -12,14 +12,14 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/student/assessment/$internshipId")({
   head: () => ({
     meta: [
-      { title: "Skill assessment — RISE" },
+      { title: "Prarambh skill test — RISE" },
       {
         name: "description",
         content:
-          "Answer a short set of questions per subtopic so organizations can rank you on what you can do.",
+          "Answer a short set of Prarambh questions per subtopic so organizations can rank you on what you can do.",
       },
-      { property: "og:title", content: "Skill assessment — RISE" },
-      { property: "og:description", content: "A short assessment, scored per subtopic." },
+      { property: "og:title", content: "Prarambh skill test — RISE" },
+      { property: "og:description", content: "A short Prarambh test, scored per subtopic." },
     ],
   }),
   component: AssessmentFlow,
@@ -58,7 +58,7 @@ function AssessmentFlow() {
   if (assessment.isError || internships.isError) {
     return (
       <ErrorState
-        title="Couldn't load the assessment — try again."
+        title="Couldn't load Prarambh — try again."
         onRetry={() => assessment.refetch()}
       />
     );
@@ -81,7 +81,7 @@ function AssessmentFlow() {
   if (!application) {
     return (
       <ErrorState
-        title="Apply to this internship first — the assessment is scored against that application."
+        title="Apply to this internship first — Prarambh is scored against that application."
         onRetry={() =>
           navigate({ to: "/student/internships/$internshipId", params: { internshipId } })
         }
@@ -90,7 +90,7 @@ function AssessmentFlow() {
   }
 
   if (!flat.length) {
-    return <ErrorState title="This role has no assessment attached yet." />;
+    return <ErrorState title="This role has no Prarambh attached yet." />;
   }
 
   const current = flat[index]!;
@@ -152,7 +152,7 @@ function AssessmentFlow() {
       <div className="grid gap-8 sm:grid-cols-[minmax(0,1fr)_200px]">
         <div>
           <p className="mt-6 hidden text-[13px] font-semibold text-muted sm:block">
-            {internship?.title} assessment
+            {internship?.title} · Prarambh
           </p>
           <h1 className="display-md mt-3 sm:mt-2">{current.q}</h1>
 
@@ -185,7 +185,7 @@ function AssessmentFlow() {
               </Button>
             ) : (
               <Button className="flex-1 sm:flex-none" disabled={!answeredAll} onClick={finish}>
-                Submit assessment
+                Submit Prarambh
               </Button>
             )}
           </div>
