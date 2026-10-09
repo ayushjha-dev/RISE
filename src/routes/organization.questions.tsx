@@ -108,13 +108,9 @@ function UploadQuestions() {
       subtopics: [subtopic],
       orgId: session?.id,
     });
-    const attached = internshipId ? mine.find((i) => i.id === internshipId) : null;
-    if (attached) actions.setInternshipAssessment(attached.id, id);
     toast.push(
       "success",
-      attached
-        ? `Prarambh set published and attached to “${attached.title}” — applicants take these ${validQuestions.length} question${validQuestions.length === 1 ? "" : "s"}.`
-        : `Prarambh set published — ${validQuestions.length} question${validQuestions.length === 1 ? "" : "s"} in ${subtopic.name}.`,
+      `Prarambh set published — ${validQuestions.length} question${validQuestions.length === 1 ? "" : "s"} in ${subtopic.name}.`,
     );
     setSubtopicName("");
     setQuestions([newQuestion()]);

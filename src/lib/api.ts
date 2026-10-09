@@ -60,16 +60,10 @@ export const internshipsQuery = () =>
   queryOptions({
     queryKey: ["internships"],
     queryFn: () =>
-      read<Internship[]>(() => {
-        const extras = getState().extraInternships;
-        // Extras win over seeds: editing a seed posting or attaching a Prarambh
-        // set creates an override record with the seed's id.
-        const overrideIds = new Set(extras.map((i) => i.id));
-        return [
-          ...extras,
-          ...(internshipsSeed as Internship[]).filter((s) => !overrideIds.has(s.id)),
-        ];
-      }),
+      read<Internship[]>(() => [
+        ...getState().extraInternships,
+        ...(internshipsSeed as Internship[]),
+      ]),
   });
 
 export const assessmentQuery = (id: string) =>
