@@ -22,7 +22,6 @@ import { Route as OrganizationIndexRouteImport } from './routes/organization.ind
 import { Route as OrganizationApplicantsRouteImport } from './routes/organization.applicants'
 import { Route as OrganizationPostRouteImport } from './routes/organization.post'
 import { Route as OrganizationProfileRouteImport } from './routes/organization.profile'
-import { Route as OrganizationQuestionsRouteImport } from './routes/organization.questions'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as StudentInternshipsRouteImport } from './routes/student.internships'
 import { Route as StudentLearningRouteImport } from './routes/student.learning'
@@ -97,11 +96,6 @@ const OrganizationProfileRoute = OrganizationProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => OrganizationRoute,
 } as any)
-const OrganizationQuestionsRoute = OrganizationQuestionsRouteImport.update({
-  id: '/questions',
-  path: '/questions',
-  getParentRoute: () => OrganizationRoute,
-} as any)
 const StudentIndexRoute = StudentIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -158,7 +152,6 @@ export interface FileRoutesByFullPath {
   '/organization/applicants': typeof OrganizationApplicantsRoute
   '/organization/post': typeof OrganizationPostRoute
   '/organization/profile': typeof OrganizationProfileRoute
-  '/organization/questions': typeof OrganizationQuestionsRoute
   '/student/internships': typeof StudentInternshipsRouteWithChildren
   '/student/learning': typeof StudentLearningRoute
   '/student/profile': typeof StudentProfileRoute
@@ -179,7 +172,6 @@ export interface FileRoutesByTo {
   '/organization/applicants': typeof OrganizationApplicantsRoute
   '/organization/post': typeof OrganizationPostRoute
   '/organization/profile': typeof OrganizationProfileRoute
-  '/organization/questions': typeof OrganizationQuestionsRoute
   '/student/learning': typeof StudentLearningRoute
   '/student/profile': typeof StudentProfileRoute
   '/institution': typeof InstitutionIndexRoute
@@ -203,7 +195,6 @@ export interface FileRoutesById {
   '/organization/applicants': typeof OrganizationApplicantsRoute
   '/organization/post': typeof OrganizationPostRoute
   '/organization/profile': typeof OrganizationProfileRoute
-  '/organization/questions': typeof OrganizationQuestionsRoute
   '/student/internships': typeof StudentInternshipsRouteWithChildren
   '/student/learning': typeof StudentLearningRoute
   '/student/profile': typeof StudentProfileRoute
@@ -229,7 +220,6 @@ export interface FileRouteTypes {
     | '/organization/applicants'
     | '/organization/post'
     | '/organization/profile'
-    | '/organization/questions'
     | '/student/internships'
     | '/student/learning'
     | '/student/profile'
@@ -250,7 +240,6 @@ export interface FileRouteTypes {
     | '/organization/applicants'
     | '/organization/post'
     | '/organization/profile'
-    | '/organization/questions'
     | '/student/learning'
     | '/student/profile'
     | '/institution'
@@ -273,7 +262,6 @@ export interface FileRouteTypes {
     | '/organization/applicants'
     | '/organization/post'
     | '/organization/profile'
-    | '/organization/questions'
     | '/student/internships'
     | '/student/learning'
     | '/student/profile'
@@ -388,13 +376,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrganizationProfileRouteImport
       parentRoute: typeof OrganizationRoute
     }
-    '/organization/questions': {
-      id: '/organization/questions'
-      path: '/questions'
-      fullPath: '/organization/questions'
-      preLoaderRoute: typeof OrganizationQuestionsRouteImport
-      parentRoute: typeof OrganizationRoute
-    }
     '/student/': {
       id: '/student/'
       path: '/'
@@ -474,7 +455,6 @@ interface OrganizationRouteChildren {
   OrganizationApplicantsRoute: typeof OrganizationApplicantsRoute
   OrganizationPostRoute: typeof OrganizationPostRoute
   OrganizationProfileRoute: typeof OrganizationProfileRoute
-  OrganizationQuestionsRoute: typeof OrganizationQuestionsRoute
   OrganizationIndexRoute: typeof OrganizationIndexRoute
 }
 
@@ -482,7 +462,6 @@ const OrganizationRouteChildren: OrganizationRouteChildren = {
   OrganizationApplicantsRoute: OrganizationApplicantsRoute,
   OrganizationPostRoute: OrganizationPostRoute,
   OrganizationProfileRoute: OrganizationProfileRoute,
-  OrganizationQuestionsRoute: OrganizationQuestionsRoute,
   OrganizationIndexRoute: OrganizationIndexRoute,
 }
 
