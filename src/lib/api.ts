@@ -5,7 +5,7 @@ import organizationsSeed from "@/data/organizations.json";
 import internshipsSeed from "@/data/internships.json";
 import assessmentsSeed from "@/data/assessments.json";
 import nptelSeed from "@/data/nptelLinks.json";
-import { getState, type Internship, type Assessment } from "./store";
+import { getState, type Internship } from "./store";
 
 /**
  * The data layer is local JSON, but every read is shaped like a network call and
@@ -25,6 +25,7 @@ export type Institution = {
   about: string;
 };
 export type Organization = (typeof organizationsSeed)[number];
+export type Assessment = (typeof assessmentsSeed)[number];
 export type LearningLink = (typeof nptelSeed)[number];
 
 const latency = (ms = 260) => new Promise((r) => setTimeout(r, ms));
@@ -70,21 +71,9 @@ export const assessmentQuery = (id: string) =>
   queryOptions({
     queryKey: ["assessment", id],
     queryFn: () =>
-      read<Assessment | undefined>(() => {
-        const extra = getState().extraAssessments.find((a) => a.id === id);
-        if (extra) return extra;
-        return (assessmentsSeed as Assessment[]).find((a) => a.id === id);
-      }),
-  });
-
-export const assessmentsQuery = () =>
-  queryOptions({
-    queryKey: ["assessments"],
-    queryFn: () =>
-      read<Assessment[]>(() => [
-        ...getState().extraAssessments,
-        ...(assessmentsSeed as Assessment[]),
-      ]),
+      read<Assessment | undefined>(() =>
+        (assessmentsSeed as Assessment[]).find((a) => a.id === id),
+      ),
   });
 
 export const learningQuery = () =>
